@@ -11,6 +11,7 @@ and ignored cache directories. No user-global Java setting is changed.
 - `./scripts/verify.sh all`: host, device, and process restart checks.
 - `./scripts/verify.sh connected`: device tests on an already-running emulator (CI).
 - `./scripts/emulator.sh run`: install and launch the debug app on emulator-5556.
+- `./scripts/emulator.sh window`: restart this project's emulator with a visible window and launch the app.
 - `./scripts/emulator.sh stop`: stop only this project's emulator.
 
 Host reports: `app/build/reports/tests/testDebugUnitTest/` and

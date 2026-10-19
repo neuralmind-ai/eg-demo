@@ -27,6 +27,17 @@ emulator use. Select JDK 21 (local `.tooling/jdk/Contents/Home`) for Gradle and 
 `.tooling/android-sdk`. The command-line harness works independently of the IDE.
 The local automated emulator uses port 5556; tests leave only synthetic notes.
 
+To open a visible emulator window and launch the app:
+
+```sh
+./scripts/emulator.sh window
+```
+
+This restarts only this project's emulator if it is already running headlessly.
+`./scripts/emulator.sh run` uses headless mode for automated testing. Scripts prefer
+the installed project-local SDK over inherited `ANDROID_HOME`/`ANDROID_SDK_ROOT`.
+Set `NOTE_TAKER_ANDROID_HOME` to explicitly choose a different SDK.
+
 For other hosts, install JDK 21 and the Android SDK normally, set `JAVA_HOME` and
 `ANDROID_HOME`, and run `./init.sh`. Use an appropriate emulator image for the host
 architecture and `./gradlew :app:connectedDebugAndroidTest`. Automatic bootstrap

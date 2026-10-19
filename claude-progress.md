@@ -4,7 +4,7 @@
 - Repository: /Users/rafael/projects/android-note-taker
 - Startup: `./init.sh`
 - Full local verification: `./scripts/verify.sh all`
-- Completed: foundation-001 (starter harness, pinned build, persisted-note slice).
+- Completed: foundation-001 and harness-sdk-001 (fresh-terminal SDK discovery and visible emulator launcher).
 - Highest-priority unfinished feature: notes-002 (autosave); not started.
 - Current blocker: none for local development. No Git remote is configured, so
   GitHub-hosted CI execution is unverified.
@@ -66,3 +66,24 @@ Subsequent standalone and CI-entry-point runs passed. No app test was weakened.
 - Next task: notes-002 autosave design and tests when requested. Preserve the
   persistence checks and migration policy. See session-handoff.md.
 - Checkpoint: initial foundation commit; exact hash is available in Git history.
+
+
+## Session 002 — October 19, 2026: fresh-terminal launcher fix
+- User reported adb/emulator command-not-found despite installed local tools.
+- Reproduced with stale ANDROID_HOME. Scripts previously preferred any inherited
+  SDK path over the installed project SDK.
+- env.sh now prefers the project SDK, synchronizes ANDROID_SDK_ROOT, preserves
+  external SDK support without a local install, and accepts explicit override
+  NOTE_TAKER_ANDROID_HOME. Four regression tests cover these cases and run in
+  the standard verification script.
+- Added `./scripts/emulator.sh window`: restart only this project's emulator with
+  a visible window, wait for boot, install the APK, and launch the app. Added
+  tool preflight diagnostics and AVD identity checks before reuse/stop.
+- Verification: four SDK-discovery tests PASS; shell syntax and harness validation
+  PASS; `ANDROID_HOME=/tmp/missing-sdk ./init.sh` PASS; same invalid environment
+  with `./scripts/emulator.sh window` PASS (boot, install on one device, MainActivity
+  launch). Logs: .artifacts/launcher-host.log and launcher-window.log.
+- Initial sandbox baseline could not open Gradle's local lock socket; rerun with
+  execution permission passed. No Android application behavior changed.
+- Emulator is now visible on emulator-5556. Next product feature remains autosave;
+  not started during this launcher fix. Updated README and verification commands.

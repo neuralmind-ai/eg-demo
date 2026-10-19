@@ -36,6 +36,26 @@
       "notes": "Local development foundation verified. Remote CI and optional device configurations remain unverified; see handoff. Explicit Save only."
     },
     {
+      "id": "harness-sdk-001",
+      "priority": 1,
+      "area": "harness",
+      "title": "Resolve SDK tools in fresh terminals and launch visible emulator",
+      "user_visible_behavior": "A stale inherited SDK path does not hide the local tools; one command opens the emulator window and app.",
+      "status": "passing",
+      "verification": [
+        "SDK discovery regression tests pass",
+        "Baseline passes with stale ANDROID_HOME",
+        "Visible emulator boots and launches the app"
+      ],
+      "evidence": [
+        "2026-10-19: python3 -m unittest discover -s scripts/tests -v passed all 4 SDK discovery regression tests.",
+        "2026-10-19: ANDROID_HOME=/tmp/missing-sdk ./init.sh passed build, lint, and JVM baseline.",
+        "2026-10-19: ANDROID_HOME=/tmp/missing-sdk ./scripts/emulator.sh window booted a visible API 36 emulator, installed the APK, and launched MainActivity.",
+        "2026-10-19: bash -n scripts/*.sh and harness validation passed."
+      ],
+      "notes": "Root cause reproduced with ANDROID_HOME pointing to a missing SDK."
+    },
+    {
       "id": "notes-002",
       "priority": 2,
       "area": "notes",

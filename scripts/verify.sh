@@ -4,6 +4,7 @@ source "$(dirname "$0")/env.sh"
 cd "$PROJECT_ROOT"
 mkdir -p .artifacts
 python3 scripts/check_harness.py
+python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 if [ ! -x ./gradlew ] || ! command -v adb >/dev/null; then
   echo 'Missing toolchain. See README and run ./scripts/bootstrap.sh first.' >&2
   exit 1

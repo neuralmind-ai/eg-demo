@@ -15,7 +15,8 @@ behavior tests, CI workflow, runtime evidence scripts, and Room schema added.
 No remote exists: GitHub CI has not executed. API 28, optional managed API 35,
 tablet, cloud physical hardware, and OS-initiated process-death recovery have not
 been tested. The app intentionally uses explicit Save; pending text is not durable.
-The local emulator is headless and remains available on emulator-5556.
+The local emulator is now visible and remains available on emulator-5556.
+SDK discovery regression tests and startup pass even with stale ANDROID_HOME.
 
 ## Next best step
 notes-002: design and implement autosave with ordered writes, failure/retry state,
@@ -25,7 +26,8 @@ checks or use destructive database migrations. Future feature work requires a us
 ## Commands
 - Startup: ./init.sh
 - Full checks: ./scripts/verify.sh all
-- App: ./scripts/emulator.sh run
+- Visible app: ./scripts/emulator.sh window
+- Headless/reuse app: ./scripts/emulator.sh run
 - Local CI device entry point: ANDROID_SERIAL=emulator-5556 ./scripts/ci-device.sh
 - Stop local emulator: ./scripts/emulator.sh stop
 - Evidence: claude-progress.md; reports under app/build/reports; local logs .artifacts/.
