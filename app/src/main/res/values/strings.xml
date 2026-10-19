@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Note Taker</string>
+    <string name="edit_note">Edit note</string>
+    <string name="back">Back</string>
+    <string name="new_note">New note</string>
+    <string name="empty_notes">Your notes live here. Create your first note.</string>
+    <string name="untitled">Untitled</string>
+    <string name="title">Title</string>
+    <string name="note">Note</string>
+    <string name="save">Save</string>
+    <string name="saved">Saved on this device</string>
+    <string name="saving">Saving…</string>
+    <string name="unsaved">Unsaved changes — tap Save to keep them.</string>
+    <string name="save_failed">Could not save. Your changes are still here. Try again.</string>
+    <string name="discard_title">Discard unsaved changes?</string>
+    <string name="discard_message">These changes have not been saved on this device.</string>
+    <string name="discard">Discard</string>
+    <string name="keep_editing">Keep editing</string>
+</resources>

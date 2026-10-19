@@ -1,0 +1,97 @@
+{
+  "project": "android-note-taker",
+  "last_updated": "2026-10-19",
+  "rules": {
+    "single_active_feature": true,
+    "passing_requires_evidence": true,
+    "do_not_skip_verification": true
+  },
+  "status_legend": {
+    "not_started": "Work has not begun.",
+    "in_progress": "Current active feature.",
+    "blocked": "Documented blocker prevents verification.",
+    "passing": "Acceptance checks passed with evidence."
+  },
+  "features": [
+    {
+      "id": "foundation-001",
+      "priority": 1,
+      "area": "foundation",
+      "title": "Agent harness and persisted-note foundation",
+      "user_visible_behavior": "A user can create, explicitly save, list, and reopen a text note after restarting the app; agents can repeat the documented checks.",
+      "status": "passing",
+      "verification": [
+        "Host build/lint/unit tests pass",
+        "Emulator Room and Compose tests pass",
+        "Saved note survives force-stop and relaunch",
+        "Harness startup and handoff are usable"
+      ],
+      "evidence": [
+        "2026-10-19: ./init.sh passed; debug APK, lint (0 errors), 4 JVM tests.",
+        "2026-10-19: ./scripts/verify.sh device passed; 2 ARM64 API 36 tests (Room disk persistence and Compose journey).",
+        "2026-10-19: ./scripts/process-smoke.sh passed; saved note verified after force-stop in a fresh process.",
+        "2026-10-19: ANDROID_SERIAL=emulator-5556 ./scripts/ci-device.sh passed locally, including both restart phases and evidence capture.",
+        "Harness validation, shell syntax, and CI YAML/pinned-action checks passed. Details: claude-progress.md."
+      ],
+      "notes": "Local development foundation verified. Remote CI and optional device configurations remain unverified; see handoff. Explicit Save only."
+    },
+    {
+      "id": "notes-002",
+      "priority": 2,
+      "area": "notes",
+      "title": "Autosave with ordered writes and recovery",
+      "user_visible_behavior": "Autosave with ordered writes and recovery",
+      "status": "not_started",
+      "verification": [
+        "Rapid edits cannot overwrite newer content",
+        "Pending and failed saves are visible",
+        "Lifecycle and process interruption behavior is tested"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "notes-003",
+      "priority": 3,
+      "area": "notes",
+      "title": "Search and deterministic sorting",
+      "user_visible_behavior": "Search and deterministic sorting",
+      "status": "not_started",
+      "verification": [
+        "Search finds matching titles and bodies",
+        "Empty and Unicode queries behave predictably"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "notes-004",
+      "priority": 4,
+      "area": "notes",
+      "title": "Delete and undo",
+      "user_visible_behavior": "Delete and undo",
+      "status": "not_started",
+      "verification": [
+        "Deleted note disappears",
+        "Undo restores the note and contents"
+      ],
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "release-005",
+      "priority": 5,
+      "area": "notes",
+      "title": "Release compatibility and real-device coverage",
+      "user_visible_behavior": "Release compatibility and real-device coverage",
+      "status": "not_started",
+      "verification": [
+        "Minimum API and tablet checks pass",
+        "Cloud physical-device smoke passes",
+        "Backup/export and signing decisions documented"
+      ],
+      "evidence": [],
+      "notes": ""
+    }
+  ]
+}
